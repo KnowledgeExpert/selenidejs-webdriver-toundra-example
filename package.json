@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "typescript": "^3.2.4",
+    "toundra": "^1.0.1",
+    "selenidejs": "^1.1.0"
+  },
+  "scripts": {
+    "pretest": "rm -rf build && tsc",
+    "test": "node --experimental-worker node_modules/.bin/toundra --threads 4 build/search-engines.spec.js"
+  },
+  "author": {
+    "name": "Knowledge Expert SA",
+    "email": "ke@k-expert.com"
+  },
+  "license": "MIT"
+}
