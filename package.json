@@ -1,12 +1,13 @@
 {
   "dependencies": {
     "typescript": "^3.2.4",
-    "toundra": "^1.0.1",
-    "selenidejs": "^1.1.0"
+    "toundra": "1.1.0",
+    "selenidejs": "^1.1.0",
+    "chromedriver": "^2.46.0"
   },
   "scripts": {
     "pretest": "rm -rf build && tsc",
-    "test": "node --experimental-worker node_modules/.bin/toundra --threads 4 build/search-engines.spec.js"
+    "test": "toundra --threads 4 build/*.spec.js"
   },
   "author": {
     "name": "Knowledge Expert SA",
