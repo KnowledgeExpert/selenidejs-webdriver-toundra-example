@@ -17,30 +17,26 @@ suite('search engines should search', () => {
         await browser.should(have.title('Selenium - Web Browser Automation'))
 });
 
-    test('yahoo', async () => {
-        await browser.open('http:us.yahoo.com/');
+    test('ecosia', async () => {
+        await browser.open('https://www.ecosia.org/');
 
-        await browser.element(by.name('p')).setValue('selenium').then(perform.pressEnter);
+        await browser.element(by.name('q')).setValue('selenium').then(perform.pressEnter);
 
-        await browser.all('.algo-sr').should(have.size(10))
-            .then(find.elementAt(0))
+        await browser.all('.result').should(have.size(11))
+            .then(find.first)
             .then(should.match(have.text('Selenium automates browsers')))
             .then(find.element('a'))
             .then(perform.click);
 
-        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-        await sleep(3000);
-        await browser.goToNextTab();
         await browser.should(have.title('Selenium - Web Browser Automation'))
     });
 
-    test('bing', async () => {
-        await browser.open('https:www.bing.com/');
+    test('searchencrypt', async () => {
+        await browser.open('https://www.searchencrypt.com');
 
-        await browser.element(by.name('q')).setValue('selenium');
-        await browser.all('.sa_sg').elementAt(0).click();
+        await browser.element(by.name('q')).setValue('selenium').then(perform.pressEnter);
 
-        await browser.all('.b_algo').should(have.size(10))
+        await browser.all('.search-result-container').should(have.size(10))
         .then(find.first)
         .then(should.match(have.text('Selenium automates browsers')))
         .then(find.element('a'))
